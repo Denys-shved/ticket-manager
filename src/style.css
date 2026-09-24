@@ -1,0 +1,60 @@
+/* *
+{
+    margin: 0;
+    padding: 0;
+} */
+
+html,
+body
+{
+    margin: 0;
+    padding: 0;
+}
+.ticket {
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid black;
+}
+
+/* .webgl
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    outline: none;
+}
+
+#main-heading {
+  transition: all 1s ease;
+  text-align: left;
+}
+
+#main-heading.centered {
+  font-size: 48px;
+  opacity: 0.8;
+  text-align: center;
+} */
+/* #canvas{
+    border: 3px solid #ff0000
+} */
+
+/* h1{
+    background-color: brown;
+} */
+/* .heading-wrapper {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* Клас, який додаватиметься при появі в екрані */
+/*.heading-wrapper.visible {
+  opacity: 1;
+  transform: translateY(0);
+} */
+
+.ticket {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 10px;
+}
