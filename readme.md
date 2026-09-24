@@ -14,3 +14,12 @@ npm run dev
 # Build for production in the dist/ directory
 npm run build
 ```
+## Technologies
+
+- TypeScript
+- React
+- React Router
+- Express
+- SQLite
+- JWT
+- Vitest
