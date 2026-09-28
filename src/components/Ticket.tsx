@@ -3,7 +3,6 @@ import { CreateTicketData, TicketPriority } from "../types/ticket"
 import { Ticket } from "../types/ticket"
 import { useState } from "react"
 import { CreateTicketResult } from "../types/ticket"
-import { Link } from "react-router-dom"
 
 export function TicketComponent(props: { ticket: Ticket,
     onComplete: (id: number) => void,
@@ -14,25 +13,52 @@ export function TicketComponent(props: { ticket: Ticket,
     
     return (
         <div className="ticket">
-            <Link to={`/tickets/${props.ticket.id}`}>{props.ticket.id}</Link>
-            <p>{props.ticket.title}</p>
-            <p>{props.ticket.description}</p>
-            <p>Priority: {props.ticket.priority}</p>
-            <p>Status: {props.ticket.status}</p>
-            {props.ticket.status === "new" && (
-                <>
-                    <button onClick={() => props.onComplete(props.ticket.id)}>
-                        Complete
-                    </button>
+            <p>{props.ticket.id}</p>
+            <p className="ticket-title">
+                {props.ticket.title}
+            </p>
+            <p className="ticket-description">
+                {props.ticket.description}
+            </p>
+            <p className="ticket-meta">
+                Priority:
+                <span className={`ticket-badge priority-${props.ticket.priority}`}>
+                    {props.ticket.priority}
+                </span>
+            </p>
 
-                    <button onClick={() => props.onCancel(props.ticket.id)}>
-                        Cancel
-                    </button>
-                </>
-            )}
-            <button onClick={() => props.onDelete(props.ticket.id)}>
-                Delete
-            </button>
+            <p className="ticket-meta">
+                Status:
+                <span className={`ticket-badge status-${props.ticket.status}`}>
+                    {props.ticket.status}
+                </span>
+            </p>
+            <div className="ticket-actions">
+                {props.ticket.status === "new" && (
+                    <>
+                        <button
+                            className="button-complete"
+                            onClick={() => props.onComplete(props.ticket.id)}
+                        >
+                            Complete
+                        </button>
+
+                        <button
+                            className="button-cancel"
+                            onClick={() => props.onCancel(props.ticket.id)}
+                        >
+                            Cancel
+                        </button>
+                    </>
+                )}
+
+                <button
+                    className="button-delete"
+                    onClick={() => props.onDelete(props.ticket.id)}
+                >
+                    Delete
+                </button>
+            </div>
         </div>
     )
 }
@@ -47,8 +73,10 @@ export function CreateTicket(props: {
     const [priority, setPriority] = useState<TicketPriority>("low")
     const [error, setError] = useState("")
     return (
-        <div>
-            <h3>{props.title}</h3>
+        <div className="create-ticket">
+            <h2 className="create-ticket-title">
+                {props.title}
+            </h2>
             <input
                 type="text"
                 placeholder="Ticket title"
@@ -70,6 +98,7 @@ export function CreateTicket(props: {
             </select>
             {error && <p>{error}</p>}
             <button
+                className="button-create"
                 onClick={async () => {
                     setError("")
 

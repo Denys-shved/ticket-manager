@@ -286,8 +286,18 @@ export function TicketsPage() {
     }
 
     return (
-        <div>
-
+        <div className="tickets-page">
+            <div className="page-header">
+                <h1 className="page-title">
+                    Ticket Manager
+                </h1>
+                <button
+                    className="button-logout"
+                    onClick={handleLogout}
+                >
+                    Logout
+                </button>
+            </div>
             {/* ------------------------------------------------
                 CREATE TICKET FORM
                 ------------------------------------------------
@@ -313,75 +323,72 @@ export function TicketsPage() {
                 }}
             />
 
-            {/* ------------------------------------------------
-                SEARCH
-                ------------------------------------------------
+            <div className="tickets-toolbar">
+                {/* ------------------------------------------------
+                    SEARCH
+                    ------------------------------------------------
 
-                Controlled input.
+                    Controlled input.
 
-                value бере значення із searchQuery.
-                onChange змінює searchQuery.
-            */}
+                    value бере значення із searchQuery.
+                    onChange змінює searchQuery.
+                */}
 
-            <input
-                type="text"
-                placeholder="Search tickets..."
-                value={searchQuery}
-                onChange={(e) =>
-                    setSearchQuery(e.target.value)
-                }
-            />
-
-
-            {/* ------------------------------------------------
-                STATUS FILTER
-                ------------------------------------------------
-
-                Controlled select.
-
-                statusFilter зберігає поточний вибраний статус.
-                setStatusFilter змінює його.
-            */}
-
-            <select
-                value={statusFilter}
-                onChange={(e) =>
-                    setStatusFilter(
-                        e.target.value as StatusFilter
-                    )
-                }
-            >
-                <option value="all">All</option>
-                <option value="new">New</option>
-                <option value="in-progress">
-                    In Progress
-                </option>
-                <option value="completed">
-                    Completed
-                </option>
-                <option value="cancelled">
-                    Cancelled
-                </option>
-            </select>
+                <input
+                    type="text"
+                    placeholder="Search tickets..."
+                    value={searchQuery}
+                    onChange={(e) =>
+                        setSearchQuery(e.target.value)
+                    }
+                />
 
 
-            {/* ------------------------------------------------
-                TICKETS COUNTER
-                ------------------------------------------------
+                {/* ------------------------------------------------
+                    STATUS FILTER
+                    ------------------------------------------------
 
-                Показує:
-                скільки tickets зараз відображається
-                із загальної кількості.
-            */}
+                    Controlled select.
 
-            <p>
-                Showing {filteredTickets.length} of {tickets.length} tickets
-            </p>
+                    statusFilter зберігає поточний вибраний статус.
+                    setStatusFilter змінює його.
+                */}
 
-            
-            <button onClick={handleLogout}>
-                Logout
-            </button>
+                <select
+                    value={statusFilter}
+                    onChange={(e) =>
+                        setStatusFilter(
+                            e.target.value as StatusFilter
+                        )
+                    }
+                >
+                    <option value="all">All</option>
+                    <option value="new">New</option>
+                    <option value="in-progress">
+                        In Progress
+                    </option>
+                    <option value="completed">
+                        Completed
+                    </option>
+                    <option value="cancelled">
+                        Cancelled
+                    </option>
+                </select>
+
+
+                {/* ------------------------------------------------
+                    TICKETS COUNTER
+                    ------------------------------------------------
+
+                    Показує:
+                    скільки tickets зараз відображається
+                    із загальної кількості.
+                */}
+
+                <p>
+                    Showing {filteredTickets.length} of {tickets.length} tickets
+                </p>
+            </div>
 
             {/* ------------------------------------------------
                 TICKET LIST

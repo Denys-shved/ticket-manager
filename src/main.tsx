@@ -1,11 +1,7 @@
 import React from "react"
 import { createRoot } from "react-dom/client"
 
-import {
-    BrowserRouter,
-    Routes,
-    Route
-} from "react-router-dom"
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 
 import { TicketsPage } from "./pages/TicketsPage"
 import { TicketDetailsPage } from "./pages/TicketDetailsPage"
@@ -34,14 +30,15 @@ root.render(
                     </ProtectedRoute>
                 }
             />
-            <Route
+            <Route path="/" element={<Navigate to="/login" replace />} />
+            {/* <Route
                 path="/tickets/:id"
                 element={
                     <ProtectedRoute>
                         <TicketDetailsPage />
                     </ProtectedRoute>
                 }
-            />
+            /> */}
         </Routes>
     </BrowserRouter>
 )

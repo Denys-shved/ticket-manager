@@ -4,8 +4,10 @@ import {
     TicketStatus
 } from "../types/ticket"
 
-export const API_URL = "http://localhost:3000/tickets"
-const AUTH_URL = "http://localhost:3000/auth"
+// export const API_URL = "http://localhost:3000/tickets"
+// const AUTH_URL = "http://localhost:3000/auth"
+const API_URL = `${import.meta.env.VITE_API_URL}/tickets`
+const AUTH_URL = `${import.meta.env.VITE_API_URL}/auth`
 
 export class ApiError extends Error {
     status: number

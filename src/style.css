@@ -1,8 +1,9 @@
-/* *
+*
 {
     margin: 0;
     padding: 0;
-} */
+    box-sizing: border-box;
+}
 
 html,
 body
@@ -11,50 +12,300 @@ body
     padding: 0;
 }
 .ticket {
-    margin: 5px;
-    padding: 5px;
-    border: 1px solid black;
+    margin-bottom: 16px;
+    padding: 20px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f6f7f9;
+    color: #1f2937;
 }
 
-/* .webgl
-{
-    position: fixed;
-    top: 0;
-    left: 0;
+#tickets-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 32px 20px;
+}
+.ticket-title {
+    margin: 0 0 10px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.ticket-title a {
+    color: #111827;
+    text-decoration: none;
+}
+
+.ticket-title a:hover {
+    text-decoration: underline;
+}
+.ticket-description {
+    margin: 0 0 16px;
+    color: #6b7280;
+    line-height: 1.5;
+}
+.ticket-meta {
+    margin: 8px 0;
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.ticket-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    margin-left: 4px;
+    border-radius: 6px;
+    background: #f3f4f6;
+    color: #374151;
+    font-size: 13px;
+    font-weight: 500;
+}
+.priority-low {
+    background: #ecfdf5;
+    color: #047857;
+}
+
+.priority-medium {
+    background: #fffbeb;
+    color: #b45309;
+}
+
+.priority-high {
+    background: #fef2f2;
+    color: #b91c1c;
+}
+.status-new {
+    background: #eff6ff;
+    color: #2563eb;
+}
+
+.status-in-progress {
+    background: #f5f3ff;
+    color: #7c3aed;
+}
+
+.status-completed {
+    background: #ecfdf5;
+    color: #047857;
+}
+
+.status-cancelled {
+    background: #f3f4f6;
+    color: #6b7280;
+}
+button {
+    /* margin-right: 8px; */
+    padding: 4px 10px;
+    border: none;
+    border-radius: 6px;
+    background: #2563eb;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+.button-complete {
+    background: #059669;
+}
+
+.button-complete:hover {
+    background: #047857;
+}
+
+.button-cancel {
+    background: #6b7280;
+}
+
+.button-cancel:hover {
+    background: #4b5563;
+}
+
+.button-delete {
+    background: #dc2626;
+}
+
+.button-delete:hover {
+    background: #b91c1c;
+}
+.ticket-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+}
+.tickets-page {
+    width: 100%;
+}
+.tickets-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+.tickets-toolbar input,
+.tickets-toolbar select {
+    padding: 9px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #1f2937;
+    font-size: 14px;
+}
+.tickets-toolbar input {
+    width: 240px;
+}
+.button-logout {
+    background: #374151;
+}
+
+.button-logout:hover {
+    background: #1f2937;
+}
+.page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.page-title {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.create-ticket{
+    margin-bottom: 20px;
+}
+
+.create-ticket input,
+.create-ticket textarea,
+.create-ticket select {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #1f2937;
+    font-size: 14px;
+}
+.create-ticket textarea {
+    min-height: 60px;
+    resize: vertical;
+}
+.create-ticket-title {
+    margin: 0 0 20px;
+    font-size: 22px;
+    font-weight: 600;
+}
+.button-create {
+    margin-top: 4px;
+    background: #2563eb;
+    padding-top: 10px; 
+    padding-bottom: 10px;
+}
+
+.button-create:hover {
+    background: #1d4ed8;
+}
+.create-ticket input:focus,
+.create-ticket textarea:focus,
+.create-ticket select:focus {
     outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+.tickets-toolbar input:focus,
+.tickets-toolbar select:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
-#main-heading {
-  transition: all 1s ease;
-  text-align: left;
+.login-page {
+    width: calc(100% - 40px);
+    max-width: 420px;
+    margin: 40px auto;
+    padding: 24px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+.login-page input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #1f2937;
+    font-size: 14px;
+}
+.login-page input:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+.button-login {
+    width: 50%;
+    margin: 10px auto 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: block;
+    background: #2563eb;
 }
 
-#main-heading.centered {
-  font-size: 48px;
-  opacity: 0.8;
-  text-align: center;
-} */
-/* #canvas{
-    border: 3px solid #ff0000
-} */
-
-/* h1{
-    background-color: brown;
-} */
-/* .heading-wrapper {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+.button-login:hover {
+    background: #1d4ed8;
+}
+.button-login:active {
+    transform: translateY(1px);
+}
+.login-title {
+    margin: 0 0 24px;
+    font-size: 28px;
+    font-weight: 600;
+    color: #1f2937;
+}
+.login-page label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
 }
 
-/* Клас, який додаватиметься при появі в екрані */
-/*.heading-wrapper.visible {
-  opacity: 1;
-  transform: translateY(0);
-} */
+@media (max-width: 480px) {
+    .tickets-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .button-create {
+        width: 100%;
+    }
 
-.ticket {
-    border: 1px solid #ccc;
-    padding: 15px;
-    margin-bottom: 10px;
+    .tickets-toolbar input {
+        width: 100%;
+    }
+    .button-login {
+        width: 100%;
+    }
+    
 }
