@@ -1,6 +1,9 @@
 import Database from "better-sqlite3"
 
-const db = new Database("tickets.db")
+// const db = new Database("tickets.db")
+const dbPath = process.env.DB_PATH || "tickets.db"
+
+const db = new Database(dbPath)
 
 db.exec(`
     CREATE TABLE IF NOT EXISTS tickets (

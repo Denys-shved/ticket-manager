@@ -4,7 +4,7 @@ import { createRoot } from "react-dom/client"
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 
 import { TicketsPage } from "./pages/TicketsPage"
-import { TicketDetailsPage } from "./pages/TicketDetailsPage"
+// import { TicketDetailsPage } from "./pages/TicketDetailsPage"
 import { LoginPage } from "./pages/LoginPage"
 import { ProtectedRoute } from "./components/ProtectedRoute"
 
@@ -18,10 +18,10 @@ root.render(
         <Routes>
             <Route path="/login" element={<LoginPage />} />
             <Route path="/tickets" element={<TicketsPage />} />
-            <Route
+            {/* <Route
                 path="/tickets/:id"
                 element={<TicketDetailsPage />}
-            />
+            /> */}
             <Route
                 path="/tickets"
                 element={
