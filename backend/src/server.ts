@@ -1,3 +1,4 @@
+import "dotenv/config"
 import express from "express"
 import cors from "cors"
 import bcrypt from "bcrypt"
@@ -7,12 +8,18 @@ import db from "./db.js"
 import { authMiddleware } from "./middleware/authMiddleware.js"
 
 
+
 // ========================================
 // CONFIGURATION
 // ========================================
 
-const JWT_SECRET = "my-super-secret-key"
-const PORT = 3000
+// const JWT_SECRET = "my-super-secret-key"
+const JWT_SECRET = process.env.JWT_SECRET
+
+if (!JWT_SECRET) {
+    throw new Error("JWT_SECRET is not defined")
+}
+const PORT = Number(process.env.PORT) || 3000
 
 
 // ========================================
