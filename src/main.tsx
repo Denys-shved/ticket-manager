@@ -17,7 +17,6 @@ root.render(
     <BrowserRouter>
         <Routes>
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/tickets" element={<TicketsPage />} />
             {/* <Route
                 path="/tickets/:id"
                 element={<TicketDetailsPage />}
