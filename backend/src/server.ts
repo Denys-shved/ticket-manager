@@ -68,9 +68,21 @@ app.post("/auth/register", async (req, res) => {
         VALUES (?, ?)
     `).run(email, passwordHash)
 
+    const token = jwt.sign(
+    {
+        id: Number(result.lastInsertRowid),
+        email
+    },
+        JWT_SECRET,
+        {
+            expiresIn: "1h"
+        }
+    )
+
     return res.status(201).json({
         id: result.lastInsertRowid,
-        email
+        email,
+        token
     })
 })
 
