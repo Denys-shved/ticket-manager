@@ -36,6 +36,26 @@ function getAuthHeaders() {
     return {Authorization: `Bearer ${token}`}
 }
 
+export async function register(
+    email: string,
+    password: string
+) {
+    const response = await fetch(`${AUTH_URL}/register`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            email,
+            password
+        })
+    })
+
+    checkResponse(response)
+
+    return await response.json()
+}
+
 export async function login(
     email: string,
     password: string
