@@ -13,7 +13,7 @@ export function TicketComponent(props: { ticket: Ticket,
     
     return (
         <div className="ticket">
-            <p>{props.ticket.id}</p>
+            <p>{props.ticket.ticketNumber}</p>
             <p className="ticket-title">
                 {props.ticket.title}
             </p>

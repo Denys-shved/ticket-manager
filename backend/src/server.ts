@@ -163,6 +163,7 @@ type TicketPriority =
     "high"
 
 type Ticket = {
+    ticketNumber: number
     id: number
     title: string
     description: string
@@ -186,7 +187,7 @@ app.get("/tickets", authMiddleware, (req, res) => {
     const tickets = db.prepare(`
         SELECT * FROM tickets
         WHERE userId = ?
-    `).all(req.user!.id)
+    `).all(req.user!.id) as Ticket[]
 
     res.json(tickets)
 })
@@ -222,9 +223,20 @@ app.post("/tickets", authMiddleware, (req, res) => {
         })
     }
 
+    const maxTicketNumber = db.prepare(`
+        SELECT MAX(ticketNumber) as maxTicketNumber
+        FROM tickets
+        WHERE userId = ?
+    `).get(req.user!.id) as {
+            maxTicketNumber: number | null
+        }
+
+    const ticketNumber = (maxTicketNumber.maxTicketNumber ?? 0) + 1
+
     // Insert ticket into database
     const insert = db.prepare(`
         INSERT INTO tickets (
+            ticketNumber,
             title,
             description,
             priority,
@@ -232,12 +244,13 @@ app.post("/tickets", authMiddleware, (req, res) => {
             createdAt,
             userId
         )
-        VALUES (?, ?, ?, ?, ?, ?)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
     `)
 
     const createdAt = new Date().toISOString()
 
     const result = insert.run(
+        ticketNumber,
         req.body.title,
         req.body.description,
         req.body.priority,
@@ -248,6 +261,7 @@ app.post("/tickets", authMiddleware, (req, res) => {
 
     // Object returned to client
     const ticket: Ticket = {
+        ticketNumber,
         id: Number(result.lastInsertRowid),
         title: req.body.title,
         description: req.body.description,

@@ -8,6 +8,7 @@ export type TicketPriority = "low" | "medium" | "high"
 
 // Повна структура ticket після його створення
 export interface Ticket {
+    ticketNumber: number
     id: number
     title: string
     description: string

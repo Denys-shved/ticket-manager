@@ -31,6 +31,17 @@ if (!hasUserId) {
     `)
 }
 
+const hasTicketNumber = columns.some(
+    (column: any) => column.name === "ticketNumber"
+)
+
+if (!hasTicketNumber) {
+    db.exec(`
+        ALTER TABLE tickets
+        ADD COLUMN ticketNumber INTEGER
+    `)
+}
+
 db.exec(`
     CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
